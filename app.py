@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import predict_fruit, predict_house
+from model import predict_feature, predict_house
 
 app = Flask(__name__, template_folder='.')
 
@@ -22,11 +22,12 @@ def predict():
     f3 = float(request.form['f3'])
     f4 = float(request.form['f4'])
 
-    fruit = predict_fruit([f1,f2,f3,f4])
+    feature = predict_feature([f1,f2,f3,f4])
 
     return render_template('index.html',
                            price=price,
-                           fruit=fruit)
+                           feature=feature)
 
 if __name__ == '__main__':
+
     app.run(debug=True)
